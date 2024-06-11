@@ -1,0 +1,13 @@
+site_name: My Docs test
+
+plugins:
+  - search
+  - mkdocs-video
+
+nav:
+  - Index: index.md
+  - BHD: bhd.md
+  - Django: dj_bhd.md
+  - Streamlit: st_bhd.md
+  
+theme: readthedocs
