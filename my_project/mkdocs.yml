@@ -1,8 +1,4 @@
-site_name: My Docs test
-
-plugins:
-  - search
-  - mkdocs-video
+site_name: Bike Rider Helmet Detection Documentation
 
 nav:
   - Index: index.md
