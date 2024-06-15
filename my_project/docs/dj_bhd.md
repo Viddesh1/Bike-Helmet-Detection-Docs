@@ -273,20 +273,20 @@ minikube stop
 
 # Demo
 ### Index Page
-![Screenshot_1](dj_bhd_images/Screenshot_1.png)
-![Screenshot_2](dj_bhd_images/Screenshot_2.png)
+![Screenshot_1](dj_bhd_images/Screenshot_1.png) <br /> <br /> 
+![Screenshot_2](dj_bhd_images/Screenshot_2.png) <br /> <br />
 
 ### Django admin panel
-![Screenshot_3](dj_bhd_images/Screenshot_3.png)
-![Screenshot_4](dj_bhd_images/Screenshot_4.png)
+![Screenshot_3](dj_bhd_images/Screenshot_3.png) <br /> <br />
+![Screenshot_4](dj_bhd_images/Screenshot_4.png) <br /> <br />
 
 ### Sqlite3 database
-![ml_app_image](dj_bhd_images/ml_app_image.png)
-![ml_app_predimage](dj_bhd_images/ml_app_predimage.png)
+![ml_app_image](dj_bhd_images/ml_app_image.png) <br /> <br />
+![ml_app_predimage](dj_bhd_images/ml_app_predimage.png) <br /> <br />
 
 ### API end points
-![Screenshot_5](dj_bhd_images/Screenshot_5.png)
-![Screenshot_6](dj_bhd_images/Screenshot_6.png)
+![Screenshot_5](dj_bhd_images/Screenshot_5.png) <br /> <br />
+![Screenshot_6](dj_bhd_images/Screenshot_6.png) <br /> <br />
 
 ### API Testing from standalone_api_test.py
 ```python
