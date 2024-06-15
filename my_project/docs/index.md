@@ -31,12 +31,27 @@ Key Components of Computer Vision:
 
 # Methodology
 
-1) Data Collection:- Collect images/videos of bike rider, helmet and no helmet for the model to train upon. <br />
+1) Data Collection:- Collect publicly availabel images / videos of bike rider, helmet and no helmet for the model to train upon. <br />
 2) Data pre-processing:- Pre-processing and autolabel images and videos using foundation model like DINO and SAM (Segment anything model).  <br />
 3) Train YOLOv8 Model. <br />
 4) Evaluate Target Model.   <br />
 5) Run Inference on images and videos.  <br />
 
+# Tools and Technologies
+
+## Hardware Requirements :-
+1) Desktop / Laptop / Server <br />
+2) 8 GB RAM at least <br />
+3) 150 GB Disk space or higher   <br />
+4) Any processor Intel i5 / AMD    <br />
+5) Google GPU - Tesla T4  <br />
+
+## Sofware Requirements :-
+1) Windows / Ubuntu os (64 or 32 bit)   <br /> 
+2) Google colab / Kaggle jupyter notebook <br />
+3) Python 3.10.12 or higher <br />
+4) Visual studio code editor, jupyter notebook <br />
+5) Sqlite version 0.5.6 or higher
 
 # Implementation details
 
@@ -49,6 +64,8 @@ YOLOv8 is from the YOLO family of models and was released on January 10, 2023. Y
 YOLOv8 by ultalytics is a state-of-the-art deep learning model designed for real-time object detection in computer vision applications. With its advanced architecture and cutting-edge algorithms, YOLOv8 has revolutionized the field of object detection, enabling accurate and efficient detection of objects in real-time scenarios. <br />
 
 YOLOv8 is quite stable as compare to latest YOLOv9 and recent YOLOv10.
+
+# Dataset information
 
 **Dataset**:- https://www.kaggle.com/datasets/andrewmvd/helmet-detection <br />
 It has 764 images of various Bike rider, Rider wearing helmet, Rider not wearing helmet.
@@ -106,23 +123,23 @@ https://github.com/Viddesh1/Bike-Helmet-Detectionv2.git <br />
 
 # Analysis of the result
 
-![confusion_matrix](yolov8_images/confusion_matrix.png)
-![P_curve](yolov8_images/P_curve.png)
-![results](yolov8_images/results.png)
+![confusion_matrix](yolov8_images/confusion_matrix.png) <br /> <br /> 
+![P_curve](yolov8_images/P_curve.png)   <br /> <br /> 
+![results](yolov8_images/results.png)   <br /> <br /> 
 
 # Inference on images
-![train_batch0](yolov8_images/train_batch0.jpg)
-![train_batch1](yolov8_images/train_batch1.jpg)
-![train_batch2](yolov8_images/train_batch2.jpg)
+![train_batch0](yolov8_images/train_batch0.jpg) <br /> <br /> 
+![train_batch1](yolov8_images/train_batch1.jpg) <br /> <br /> 
+![train_batch2](yolov8_images/train_batch2.jpg) <br /> <br /> 
 
-![val_batch0_labels](yolov8_images/val_batch0_labels.jpg)
-![val_batch0_pred](yolov8_images/val_batch0_pred.jpg)
+![val_batch0_labels](yolov8_images/val_batch0_labels.jpg)   <br /> <br /> 
+![val_batch0_pred](yolov8_images/val_batch0_pred.jpg)   <br /> <br /> 
 
-![val_batch1_labels](yolov8_images/val_batch1_labels.jpg)
-![val_batch1_pred](yolov8_images/val_batch1_pred.jpg)
+![val_batch1_labels](yolov8_images/val_batch1_labels.jpg)   <br /> <br /> 
+![val_batch1_pred](yolov8_images/val_batch1_pred.jpg)   <br /> <br /> 
 
-![val_batch2_labels](yolov8_images/val_batch2_labels.jpg)
-![val_batch2_pred](yolov8_images/val_batch2_pred.jpg)
+![val_batch2_labels](yolov8_images/val_batch2_labels.jpg)   <br /> <br /> 
+![val_batch2_pred](yolov8_images/val_batch2_pred.jpg)   <br /> <br /> 
 
 # Inference on Video
 <iframe width="700" height="500" src="/yolov8_videos/he2.mp4">
@@ -163,7 +180,7 @@ Bike Helmet Detection Django Webapp <br />
 https://github.com/Viddesh1/Bike-Helmet-Detection <br />
 
 Bike Helmet Detection Stremlit Webapp <br />
-https://github.com/Viddesh1/Bike-Helmet-Detectionv2.git <br />
+https://github.com/Viddesh1/Bike-Helmet-Detectionv2  <br />
 
 
 # References
