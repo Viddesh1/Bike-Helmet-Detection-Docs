@@ -13,41 +13,41 @@ pytube==15.0.0 # For running inference on small youtube videos
 
 # File Structure
 ```text
-Bike-Helmet-Detectionv2
-├── app.py
-├── assets
+Bike-Helmet-Detectionv2 # Root folder of this github repository
+├── app.py  # Start page of the application
+├── assets  # Necessary assets for testing
 │   ├── BikesHelmets6.png
 │   ├── video_1.mp4
 │   ├── video_2.mp4
 │   └── video_3.mp4
-├── .git
-├── .gitignore
+├── .git        # For managing files by git
+├── .gitignore  # Files to be not managed by git
 ├── helper.py
-├── images
+├── images # For rendering Predicted and not predicted to streamlit user interface
 │   ├── BikesHelmets6_detected.jpg
 │   └── BikesHelmets6.png
-├── local_requirements.txt
-├── major_packages.txt
-├── packages.txt
-├── README.md
-├── requirements.txt
+├── local_requirements.txt  # For local machine dependencies installation
+├── major_packages.txt  # major packages needed for working in this project
+├── packages.txt        # Externally insatallion of package by streamlit for deployment
+├── README.md   # This readme.md file itself
+├── requirements.txt   # For deployment dependencies file
 ├── runs
 │   └── detect
 │       └── predict
-│           └── BikesHelmets6.png
-├── settings.py
-├── videos
+│           └── BikesHelmets6.png # Predicted image
+├── settings.py # Configuration blue print for this streamlit web application
+├── videos  # For rendering video into streamlit user interface
 │   ├── video_1.mp4
 │   ├── video_2.mp4
 │   └── video_3.mp4
-└── weights
-    ├── best.pt
-    ├── information.txt
-    └── last.pt
+└── weights # Model weights 
+    ├── best.pt # Best model weight as pytorch format
+    ├── information.txt # Information related to placing weights
+    └── last.pt # Last model weight as pytorch format
 ```
 
 # How to run this streamlit webapp project locally?
-```text
+```shell
 python3 -m venv .venv
 source .venv/bin/activate
 git clone https://github.com/Viddesh1/Bike-Helmet-Detectionv2.git
@@ -57,13 +57,14 @@ pip install -r requirements.txt # For deployment
 streamlit run app.py
 ```
 
-Note:- If this app is not working locally then please add opencv-python==4.9.0.80 below before opencv-python-headless==4.8.1.78 and opencv-contrib-python==4.8.1.78 in requirements.txt file :-
+Note:- If this app is not working locally then please add opencv-python==4.9.0.80 below before opencv-python-headless==4.8.1.78 and opencv-contrib-python==4.8.1.78 in requirements.txt file
 
 ```text
 opencv-python==4.9.0.80
 opencv-python-headless==4.8.1.78
 opencv-contrib-python==4.8.1.78
 ```
+
 # Deployment Pipeline
 Continuous delivery is done by streamlit to host on Streamlit Cloud through this Github repository. 
 
