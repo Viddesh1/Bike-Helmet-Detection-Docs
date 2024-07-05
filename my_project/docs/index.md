@@ -269,10 +269,11 @@ https://www.kaggle.com/datasets/andrewmvd/helmet-detection
 This dataset contains 764 images of 2 distinct classes for the objective of helmet
 detection.
 
-Bounding box annotations are provided in the PASCAL VOC format.
-The classes are:
-- With helmet
-- Without helmet
+Bounding box annotations are provided in the PASCAL VOC format. <br />
+
+The classes are:    <br />
+- With helmet   <br />
+- Without helmet    <br />
 
 **6.2) YOLOv8 Metrics:**
 
