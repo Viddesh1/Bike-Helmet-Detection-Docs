@@ -2,6 +2,7 @@ site_name: Bike Rider Helmet Detection Documentation
 
 nav:
   - Index: index.md
+  - Index 2: index_2.md
   - BHD: bhd.md
   - Django: dj_bhd.md
   - Streamlit: st_bhd.md
