@@ -121,6 +121,18 @@ Take a look at the below github url. <br />
 https://github.com/Viddesh1/Bike-Helmet-Detectionv2.git <br />
 
 
+# YOLOv8 Architecture
+
+**YOLOv8 architecture are too big please use Netron.app for more detail and simply open best.pt and last.pt model: https://netron.app/?ref=blog.roboflow.com**
+
+![YOLOv8_architecture](yolov8_architecture/YOLOv8_architecture.jpg) <br /> <br /> 
+
+### best.pt model architecture
+![bestpt](yolov8_architecture/best.pt.png)  <br /> <br /> 
+
+### last.pt model architecture
+![lastpt](yolov8_architecture/last.pt.png)  <br /> <br /> 
+
 # Analysis of the result
 
 ![confusion_matrix](yolov8_images/confusion_matrix.png) <br /> <br /> 
