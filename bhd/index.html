@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>BHD - Bike Rider Helmet Detection Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "BHD";
+        var mkdocs_page_input_path = "bhd.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Bike Rider Helmet Detection Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_2/">Index 2</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">BHD</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#methodology">Methodology</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dj_bhd/">Django</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../st_bhd/">Streamlit</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Bike Rider Helmet Detection Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">BHD</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bike-rider-helmet-detection-using-yolov8">Bike Rider Helmet Detection using YOLOv8</h1>
+<p>This repository contains a walk through of implementation of bike rider helmet detection using YOLOv8. As we know that bike riders who do not wear helmet may which result in fatal accidents and death in some cases. The goal is to create a ML/DL model that can detect if a person is wearing helment or not. May sure to select GPU in google colab or kaggle notebook for running through the notebook. As running through the code in local machine with no graphical processing unit will take a very significant ammount of time. <br /></p>
+<h3 id="methodology">Methodology</h3>
+<p>1) Data Collection:- Collect images/videos of bike rider, helmet and no helmet for the model to train upon. <br />
+2) Data pre-processing:- Pre-processing and autolabel images and videos using foundation model like DINO and SAM (Segment anything model).  <br />
+3) Train YOLOv8 Model. <br />
+4) Evaluate Target Model.   <br />
+5) Run Inference on images and videos.  <br /></p>
+<h1 id="how-to-setup-codebase-locally">How to setup codebase locally?</h1>
+<pre><code class="language-shell">python3 -m venv .venv   # Create a virtual environment
+source .venv/bin/activate   # Activate a virtual environment
+git clone https://github.com/Viddesh1/Helmet_test_1.git
+cd Helmet_test_1/
+</code></pre>
+<h1 id="repository-file-structure">Repository File Structure</h1>
+<pre><code class="language-text">Helmet_test_1   # This repository root folder
+├── .git        # For managing files by git
+├── .gitignore  # Files to be not managed by git
+├── Helmet_how_to_auto_train_yolov8_model_with_autodistill.ipynb    # For reference
+├── kaggle_Helmet_how_to_auto_train_yolov8_model_with_autodistill.ipynb # YOLOv8 implementation
+├── README.md   # This README.md file itself
+└── tree_all.txt  # This file structure from tree -a &gt; tree_all.txt command
+</code></pre>
+<h1 id="dataset-information">Dataset Information</h1>
+<p>For this project only images and videos are needed and no annotations files are needed. As for this project auto labelling is done by using the Ultralytics framework which uses base model naming Grounded SAM (Segment Anything Model) which is a combination of Grounding DINO (Deeper Into Neural Networks) + SAM (Segment Anything model). The target model is YOLOv8.</p>
+<p>The datset that is used for this project can be find below:- <br /></p>
+<p>https://www.kaggle.com/datasets/andrewmvd/helmet-detection  <br /></p>
+<p>This dataset contains 764 images of 2 distinct classes for the objective of helmet detection.
+Bounding box annotations are provided in the PASCAL VOC format. <br />
+The classes are:</p>
+<ul>
+<li>With helmet</li>
+<li>Without helmet</li>
+</ul>
+<p>Please generate your own kaggle api key for accessing the dataset with in google colab or kaggle notebook <br /></p>
+<p>Please take a look at the below python code representing labels for individual ontology.
+<br  /></p>
+<pre><code class="language-python">from autodistill.detection import CaptionOntology
+
+    # &quot;&lt;description of label&gt;&quot;: &quot;&lt;label_name&gt;&quot;
+    # &quot;bike rider&quot;: &quot;Bike_Rider&quot;, --&gt; label 0
+    # &quot;bike rider and passanger with helmet&quot;: &quot;Helmet&quot;, --&gt; label 1
+    # &quot;bike rider and passanger with no helmet&quot;: &quot;No_Helmet&quot; --&gt; label 2
+
+ontology=CaptionOntology({
+    &quot;bike rider&quot;: &quot;Bike_Rider&quot;,
+    &quot;helmet&quot;: &quot;Helmet&quot;,
+    &quot;no helmet&quot;: &quot;No_Helmet&quot;
+})
+</code></pre>
+<h1 id="dataset-file-structure">Dataset File Structure</h1>
+<pre><code class="language-text">archive     # Root file directory of https://www.kaggle.com/datasets/andrewmvd/helmet-detection
+├── annotations     # Annotations based on PASCAL VOC format as XML files
+│   ├── BikesHelmets0.xml
+│   ├── BikesHelmets100.xml
+│   ├── BikesHelmets101.xml
+├── images          # Public images for classes helmet and without helmet images
+│   ├── BikesHelmets0.png
+│   ├── BikesHelmets100.png
+│   ├── BikesHelmets101.png
+└── tree_all.txt
+
+2 directories, 1529 files
+</code></pre>
+<h2 id="this-repository-output-may-change-in-the-near-future-">This repository output may change in the near future:-</h2>
+<p>https://drive.google.com/drive/folders/1M4FckJJeyPQTTWqgo6xWhW8L4tf0EJ4l?usp=sharing</p>
+<h2 id="output-file-structure-for-yolov8">Output File Structure for YOLOv8</h2>
+<pre><code class="language-text">YOLOv8_Helmet_V0    # Main directory of YOLOv8 output
+├── dataset
+│   ├── annotations # Empty file
+│   ├── data.yaml   # Information related to data detection labels and train, valid path
+│   ├── images      # Empty folder
+│   ├── train       # Train dataset
+│   │   ├── images  # Images directory path
+│   │   │   ├── BikesHelmets0.jpg
+│   │   │   ├── BikesHelmets100.jpg
+│   │   │   ├── BikesHelmets101.jpg
+│   │   ├── labels  # Annotations directory path 
+│   │   │   ├── BikesHelmets0.txt
+│   │   │   ├── BikesHelmets100.txt
+│   │   │   ├── BikesHelmets101.txt
+│   │   └── labels.cache
+│   └── valid # Validation dataset for testing trained model
+│       ├── images  # Validation dataset images
+│       │   ├── BikesHelmets103.jpg
+│       │   ├── BikesHelmets108.jpg
+│       │   ├── BikesHelmets119.jpg
+│       ├── labels  # Validation dataset labels
+│       │   ├── BikesHelmets103.txt
+│       │   ├── BikesHelmets108.txt
+│       │   ├── BikesHelmets119.txt
+│       └── labels.cache
+├── images # All 764 images form the dataset
+│   ├── BikesHelmets0.png
+│   ├── BikesHelmets100.png
+│   ├── BikesHelmets101.png
+├── runs    # Predictions 
+│   └── detect
+│       ├── predict
+│       │   └── he2.mp4 # Inference upon video 1
+│       ├── predict2
+│       │   └── test_1.mp4  # Inference upon video 2
+│       ├── predict3
+│       │   └── test_2.mp4  # Inference upon video 3
+│       └── train
+│           ├── args.yaml   # Configuration blue print for training the YOLOv8 model parameters 
+│           ├── confusion_matrix.png
+│           ├── events.out.tfevents.1697046331.428f98cba7b3.163.0
+│           ├── F1_curve.png
+│           ├── labels_correlogram.jpg
+│           ├── labels.jpg
+│           ├── P_curve.png
+│           ├── PR_curve.png
+│           ├── R_curve.png
+│           ├── results.csv # All the metrics for train_loss, class_loss, lr etc
+│           ├── results.png # Generated from results.csv
+│           ├── train_batch0.jpg
+│           ├── train_batch1.jpg
+│           ├── train_batch2.jpg
+│           ├── val_batch0_labels.jpg
+│           ├── val_batch0_pred.jpg
+│           ├── val_batch1_labels.jpg
+│           ├── val_batch1_pred.jpg
+│           ├── val_batch2_labels.jpg
+│           ├── val_batch2_pred.jpg
+│           └── weights     # Model weights after training on custom dataset
+│               ├── best.pt # Best model as pytorch format
+│               └── last.pt # Last model as pytorch format
+├── tree_all.txt    # Generated by tree -a &gt; tree_all.txt
+├── videos          # Videos to be uploaded for preprocessing
+│   ├── he2.mp4
+│   ├── test_1.mp4
+│   └── test_2.mp4
+├── yolov8l.pt  # Default YOLOV8 large model
+└── yolov8n.pt  # Default YOLOv8 nano model
+</code></pre>
+<h1 id="external-packages-needed-for-this-project">External packages needed for this project</h1>
+<pre><code class="language-shell">!pip install -q kaggle  # For accessing dataset locally in google colab
+
+!pip install -U ultralytics
+
+!pip install -q \       # install require packages in quite mode
+autodistill \           # Automates model distillation
+autodistill-grounded-sam \ # Enhanced distillation with grounding and self-attention mechanisms.
+autodistill-yolov8 \    # distilling YOLOv8 models
+supervision==0.9.0      # For supervising models
+</code></pre>
+<h1 id="train-target-model-yolov8">Train target model - YOLOv8</h1>
+<pre><code class="language-python">
+%cd {HOME}
+
+from autodistill_yolov8 import YOLOv8
+
+target_model = YOLOv8(&quot;yolov8l.pt&quot;)
+target_model.train(DATA_YAML_PATH, epochs=50) #100
+</code></pre>
+<h3 id="relevant-information-of-target-model-yolov8">Relevant Information of target model YOLOv8</h3>
+<ol>
+<li><strong>Model Download</strong>:</li>
+<li><strong>File</strong>: <code>yolov8l.pt</code></li>
+<li><strong>Source</strong>: Ultralytics GitHub repository :- (https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l.pt)</li>
+<li>
+<p><strong>Description</strong>: Downloads the pre-trained YOLOv8 large model, which is approximately 83.7 MB in size. The model is used for object detection tasks.</p>
+</li>
+<li>
+<p><strong>YOLO library</strong>:</p>
+</li>
+<li><strong>Current Version</strong>: <code>8.0.81</code></li>
+<li><strong>New Version Available</strong>: <code>8.0.196</code></li>
+<li><strong>Update Command</strong>: <code>pip install -U ultralytics</code></li>
+<li>
+<p><strong>Description</strong>: Suggests updating the Ultralytics library to the latest version for improved features and performance.</p>
+</li>
+<li>
+<p><strong>Environment Details</strong>:</p>
+</li>
+<li><strong>Python Version</strong>: <code>3.10.12</code></li>
+<li><strong>PyTorch Version</strong>: <code>2.0.1+cu118</code></li>
+<li><strong>CUDA Version</strong>: <code>0</code> (CUDA enabled device: Tesla T4 with 15102 MiB memory)</li>
+<li>
+<p><strong>Description</strong>: Specifies the software and hardware environment used for running the YOLOv8 model.</p>
+</li>
+<li>
+<p><strong>Training Configuration</strong>:</p>
+</li>
+<li><strong>Task</strong>: <code>detect</code></li>
+<li><strong>Mode</strong>: <code>train</code></li>
+<li><strong>Model</strong>: <code>yolov8l.pt</code></li>
+<li><strong>Data</strong>: <code>/content/dataset/data.yaml</code></li>
+<li><strong>Epochs</strong>: <code>50</code></li>
+<li><strong>Patience</strong>: <code>50</code></li>
+<li><strong>Batch Size</strong>: <code>16</code></li>
+<li><strong>Image Size</strong>: <code>640</code></li>
+<li><strong>Optimizer</strong>: <code>SGD</code></li>
+<li><strong>Other Parameters</strong>: Various other hyperparameters and settings for training the model.</li>
+<li>
+<p><strong>Description</strong>: Outlines the configuration for training the YOLOv8 model using the specified dataset, model, and hyperparameters.</p>
+</li>
+<li>
+<p><strong>Font Download</strong>:</p>
+</li>
+<li><strong>File</strong>: <code>Arial.ttf</code></li>
+<li><strong>Source</strong>: Ultralytics website (https://ultralytics.com/assets/Arial.ttf)</li>
+<li><strong>Location</strong>: <code>/root/.config/Ultralytics/Arial.ttf</code></li>
+<li>
+<p><strong>Description</strong>: Downloads a font file required for visualizations and plots generated during the training process.</p>
+</li>
+<li>
+<p><strong>Model Configuration Override</strong>:</p>
+</li>
+<li><strong>Original <code>nc</code></strong>: <code>80</code></li>
+<li><strong>New <code>nc</code></strong>: <code>3</code></li>
+<li>
+<p><strong>Description</strong>: Overrides the number of classes (<code>nc</code>) in the model configuration to 3, as specified in the dataset configuration (<code>data.yaml</code>).</p>
+</li>
+<li>
+<p><strong>Optimizer</strong></p>
+</li>
+<li><strong>Type</strong>: SGD</li>
+<li><strong>Learning Rate</strong>: 0.01</li>
+<li><strong>Parameter Groups</strong>:</li>
+<li>Group 1: <ul>
+<li>Weight Decay: 0.0</li>
+<li>Number of Parameters: 97</li>
+</ul>
+</li>
+<li>Group 2:<ul>
+<li>Weight Decay: 0.0005</li>
+<li>Number of Parameters: 104</li>
+</ul>
+</li>
+<li>
+<p>Group 3:</p>
+<ul>
+<li>Bias: 103</li>
+</ul>
+</li>
+<li>
+<p><strong>Augmentations</strong>:</p>
+</li>
+<li>Blur:<ul>
+<li>Probability: 0.01</li>
+<li>Blur Limit: (3, 7)</li>
+</ul>
+</li>
+<li>MedianBlur:<ul>
+<li>Probability: 0.01</li>
+<li>Blur Limit: (3, 7)</li>
+</ul>
+</li>
+<li>ToGray:<ul>
+<li>Probability: 0.01</li>
+</ul>
+</li>
+<li>CLAHE (Contrast Limited Adaptive Histogram Equalization):<ul>
+<li>Probability: 0.01</li>
+<li>Clip Limit: (1, 4.0)</li>
+<li>Tile Grid Size: (8, 8)</li>
+</ul>
+</li>
+</ol>
+<h3 id="model-architecture-overview">Model Architecture Overview</h3>
+<p>This table details the layers and parameters of the YOLOv8 model architecture after overriding the number of classes from 80 to 3. Each row represents a layer in the model, indicating the type of layer, its parameters, and specific arguments. The model is built using various modules such as convolutional layers (<code>Conv</code>), concatenation layers (<code>Concat</code>), and the <code>Detect</code> module at the end, which specifies the number of classes and their respective parameters.</p>
+<p>The following table summarizes the architecture of the YOLOv8 model, with the number of classes (<code>nc</code>) overridden from 80 to 3. The table details the layers, parameters, and modules used in the model.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>From</th>
+<th>Num</th>
+<th>Params</th>
+<th>Module</th>
+<th>Arguments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-1</td>
+<td>1</td>
+<td>1,856</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[3, 64, 3, 2]</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>73,984</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[64, 128, 3, 2]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-1</td>
+<td>3</td>
+<td>279,808</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[128, 128, 3, True]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-1</td>
+<td>1</td>
+<td>295,424</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[128, 256, 3, 2]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>-1</td>
+<td>6</td>
+<td>2,101,248</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[256, 256, 6, True]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-1</td>
+<td>1</td>
+<td>1,180,672</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[256, 512, 3, 2]</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-1</td>
+<td>6</td>
+<td>8,396,800</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[512, 512, 6, True]</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-1</td>
+<td>1</td>
+<td>2,360,320</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[512, 512, 3, 2]</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-1</td>
+<td>3</td>
+<td>4,461,568</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[512, 512, 3, True]</td>
+</tr>
+<tr>
+<td>9</td>
+<td>-1</td>
+<td>1</td>
+<td>656,896</td>
+<td>ultralytics.nn.modules.SPPF</td>
+<td>[512, 512, 5]</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-1</td>
+<td>1</td>
+<td>0</td>
+<td>torch.nn.modules.upsampling.Upsample</td>
+<td>[None, 2, 'nearest']</td>
+</tr>
+<tr>
+<td>11</td>
+<td>[-1, 6]</td>
+<td>1</td>
+<td>0</td>
+<td>ultralytics.nn.modules.Concat</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>12</td>
+<td>-1</td>
+<td>3</td>
+<td>4,723,712</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[1024, 512, 3]</td>
+</tr>
+<tr>
+<td>13</td>
+<td>-1</td>
+<td>1</td>
+<td>0</td>
+<td>torch.nn.modules.upsampling.Upsample</td>
+<td>[None, 2, 'nearest']</td>
+</tr>
+<tr>
+<td>14</td>
+<td>[-1, 4]</td>
+<td>1</td>
+<td>0</td>
+<td>ultralytics.nn.modules.Concat</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>15</td>
+<td>-1</td>
+<td>3</td>
+<td>1,247,744</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[768, 256, 3]</td>
+</tr>
+<tr>
+<td>16</td>
+<td>-1</td>
+<td>1</td>
+<td>590,336</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[256, 256, 3, 2]</td>
+</tr>
+<tr>
+<td>17</td>
+<td>[-1, 12]</td>
+<td>1</td>
+<td>0</td>
+<td>ultralytics.nn.modules.Concat</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>18</td>
+<td>-1</td>
+<td>3</td>
+<td>4,592,640</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[768, 512, 3]</td>
+</tr>
+<tr>
+<td>19</td>
+<td>-1</td>
+<td>1</td>
+<td>2,360,320</td>
+<td>ultralytics.nn.modules.Conv</td>
+<td>[512, 512, 3, 2]</td>
+</tr>
+<tr>
+<td>20</td>
+<td>[-1, 9]</td>
+<td>1</td>
+<td>0</td>
+<td>ultralytics.nn.modules.Concat</td>
+<td>[1]</td>
+</tr>
+<tr>
+<td>21</td>
+<td>-1</td>
+<td>3</td>
+<td>4,723,712</td>
+<td>ultralytics.nn.modules.C2f</td>
+<td>[1024, 512, 3]</td>
+</tr>
+<tr>
+<td>22</td>
+<td>[15, 18, 21]</td>
+<td>1</td>
+<td>5,585,113</td>
+<td>ultralytics.nn.modules.Detect</td>
+<td>[3, [256, 512, 512]]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Model Summary</strong>:
+- <strong>Total Layers</strong>: 365
+- <strong>Total Parameters</strong>: 43,632,153
+- <strong>Total Gradients</strong>: 43,632,137
+- <strong>GFLOPs</strong>: 165.4</p>
+<p><strong>After Training model</strong></p>
+<pre><code class="language-text">50 epochs completed in 0.590 hours.
+Optimizer stripped from runs/detect/train/weights/last.pt, 87.6MB
+Optimizer stripped from runs/detect/train/weights/best.pt, 87.6MB
+
+Validating runs/detect/train/weights/best.pt...
+Ultralytics YOLOv8.0.81 🚀 Python-3.10.12 torch-2.0.1+cu118 CUDA:0 (Tesla T4, 15102MiB)
+Model summary (fused): 268 layers, 43608921 parameters, 0 gradients, 164.8 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 5/5 [00:07&lt;00:00,  1.55s/it]
+                   all        153        776      0.783      0.693      0.758      0.612
+            Bike_Rider        153        265       0.75      0.668      0.732      0.622
+                Helmet        153        336      0.836      0.776      0.816      0.592
+             No_Helmet        153        175      0.761      0.636      0.726      0.621
+Speed: 1.4ms preprocess, 14.6ms inference, 0.0ms loss, 1.6ms postprocess per image
+</code></pre>
+<h1 id="dataset-configuration-datayaml">Dataset Configuration (data.yaml)</h1>
+<h2 id="key-parameters-and-their-meaning">Key Parameters and Their Meaning</h2>
+<ul>
+<li><strong>names</strong>: List of class names in the dataset.</li>
+<li><code>Bike_Rider</code>: Represents images containing bike riders.</li>
+<li><code>Helmet</code>: Represents images containing helmets.</li>
+<li><code>No_Helmet</code>: Represents images containing individuals without helmets.</li>
+<li><strong>nc</strong>: Number of classes in the dataset (3).</li>
+<li><strong>train</strong>: Path to the directory containing training images (<code>/content/dataset/train/images</code>).</li>
+<li><strong>val</strong>: Path to the directory containing validation images (<code>/content/dataset/valid/images</code>).</li>
+</ul>
+<h1 id="yolov8-training-configuration-argsyaml">YOLOv8 Training Configuration (args.yaml)</h1>
+<h2 id="key-parameters-and-their-meaning_1">Key Parameters and Their Meaning</h2>
+<ul>
+<li><strong>task</strong>: The type of task being performed (<code>detect</code>).</li>
+<li><strong>mode</strong>: The mode of operation (<code>train</code> for training the model).</li>
+<li><strong>model</strong>: The path to the pre-trained model weights (<code>yolov8l.pt</code>).</li>
+<li><strong>data</strong>: Path to the dataset configuration file (<code>/content/dataset/data.yaml</code>).</li>
+<li><strong>epochs</strong>: Number of training epochs (50).</li>
+<li><strong>patience</strong>: Number of epochs to wait for improvement before stopping (50).</li>
+<li><strong>batch</strong>: Batch size (16).</li>
+<li><strong>imgsz</strong>: Image size for training (640).</li>
+<li><strong>save</strong>: Whether to save the training results (true).</li>
+<li><strong>save_period</strong>: Frequency of saving checkpoints (-1 means only save the last).</li>
+<li><strong>cache</strong>: Whether to cache images (false).</li>
+<li><strong>device</strong>: Compute device to use (null for automatic selection).</li>
+<li><strong>workers</strong>: Number of data loader workers (8).</li>
+<li><strong>project</strong>**: Project directory (null for default).</li>
+<li><strong>name</strong>: Experiment name (null for auto-naming).</li>
+<li><strong>exist_ok</strong>: Whether to overwrite existing experiment directory (false).</li>
+<li><strong>pretrained</strong>: Whether to use a pretrained model (false).</li>
+<li><strong>optimizer</strong>: Optimizer type (<code>SGD</code>).</li>
+<li><strong>verbose</strong>: Verbose output during training (true).</li>
+<li><strong>seed</strong>: Random seed for reproducibility (0).</li>
+<li><strong>deterministic</strong>: Ensure deterministic behavior (true).</li>
+<li><strong>single_cls</strong>: Treat the dataset as a single class (false).</li>
+<li><strong>image_weights</strong>: Use weighted image sampling (false).</li>
+<li><strong>rect</strong>: Rectangular training (false).</li>
+<li><strong>cos_lr</strong>: Use cosine learning rate scheduler (false).</li>
+<li><strong>close_mosaic</strong>: Close mosaic augmentation (0).</li>
+<li><strong>resume</strong>: Resume training from last checkpoint (false).</li>
+<li><strong>amp</strong>: Use automatic mixed precision (true).</li>
+<li><strong>overlap_mask</strong>: Use overlap masks (true).</li>
+<li><strong>mask_ratio</strong>: Mask ratio (4).</li>
+<li><strong>dropout</strong>: Dropout rate (0.0).</li>
+<li><strong>val</strong>: Whether to validate during training (true).</li>
+<li><strong>split</strong>: Data split for validation (<code>val</code>).</li>
+<li><strong>save_json</strong>: Save results to JSON (false).</li>
+<li><strong>save_hybrid</strong>: Save hybrid results (false).</li>
+<li><strong>conf</strong>: Confidence threshold (null).</li>
+<li><strong>iou</strong>: Intersection over Union threshold (0.7).</li>
+<li><strong>max_det</strong>: Maximum detections per image (300).</li>
+<li><strong>half</strong>: Use half precision (false).</li>
+<li><strong>dnn</strong>: Use OpenCV DNN module (false).</li>
+<li><strong>plots</strong>: Generate plots (true).</li>
+<li><strong>source</strong>: Source of the dataset (null).</li>
+<li><strong>show</strong>: Show results (false).</li>
+<li><strong>save_txt</strong>: Save results in TXT format (false).</li>
+<li><strong>save_conf</strong>: Save confidence scores (false).</li>
+<li><strong>save_crop</strong>: Save cropped images (false).</li>
+<li><strong>show_labels</strong>: Show labels on images (true).</li>
+<li><strong>show_conf</strong>: Show confidence scores on images (true).</li>
+<li><strong>vid_stride</strong>: Video frame stride (1).</li>
+<li><strong>line_thickness</strong>: Line thickness for bounding boxes (3).</li>
+<li><strong>visualize</strong>: Visualize feature maps (false).</li>
+<li><strong>augment</strong>: Augment data (false).</li>
+<li><strong>agnostic_nms</strong>: Class-agnostic non-max suppression (false).</li>
+<li><strong>classes</strong>: Filter by class (null).</li>
+<li><strong>retina_masks</strong>: Use high-resolution masks (false).</li>
+<li><strong>boxes</strong>: Use bounding boxes (true).</li>
+<li><strong>format</strong>: Export format (<code>torchscript</code>).</li>
+<li><strong>keras</strong>: Export to Keras format (false).</li>
+<li><strong>optimize</strong>: Optimize the model (false).</li>
+<li><strong>int8</strong>: Quantize model to int8 (false).</li>
+<li><strong>dynamic</strong>: Use dynamic shapes (false).</li>
+<li><strong>simplify</strong>: Simplify the model (false).</li>
+<li><strong>opset</strong>: ONNX opset version (null).</li>
+<li><strong>workspace</strong>: Workspace size for ONNX export (4).</li>
+<li><strong>nms</strong>: Use non-max suppression (false).</li>
+<li><strong>lr0</strong>: Initial learning rate (0.01).</li>
+<li><strong>lrf</strong>: Final learning rate (0.01).</li>
+<li><strong>momentum</strong>: Momentum for optimizer (0.937).</li>
+<li><strong>weight_decay</strong>: Weight decay (0.0005).</li>
+<li><strong>warmup_epochs</strong>: Warmup epochs (3.0).</li>
+<li><strong>warmup_momentum</strong>: Warmup momentum (0.8).</li>
+<li><strong>warmup_bias_lr</strong>: Warmup bias learning rate (0.1).</li>
+<li><strong>box</strong>: Box loss gain (7.5).</li>
+<li><strong>cls</strong>: Class loss gain (0.5).</li>
+<li><strong>dfl</strong>: DFL loss gain (1.5).</li>
+<li><strong>pose</strong>: Pose loss gain (12.0).</li>
+<li><strong>kobj</strong>: Keypoint objectness gain (1.0).</li>
+<li><strong>label_smoothing</strong>: Label smoothing (0.0).</li>
+<li><strong>nbs</strong>: Nominal batch size (64).</li>
+<li><strong>hsv_h</strong>: HSV-Hue augmentation (0.015).</li>
+<li><strong>hsv_s</strong>: HSV-Saturation augmentation (0.7).</li>
+<li><strong>hsv_v</strong>: HSV-Value augmentation (0.4).</li>
+<li><strong>degrees</strong>: Degree of rotation for augmentation (0.0).</li>
+<li><strong>translate</strong>: Translation for augmentation (0.1).</li>
+<li><strong>scale</strong>: Scaling for augmentation (0.5).</li>
+<li><strong>shear</strong>: Shear for augmentation (0.0).</li>
+<li><strong>perspective</strong>: Perspective for augmentation (0.0).</li>
+<li><strong>flipud</strong>: Vertical flip probability (0.0).</li>
+<li><strong>fliplr</strong>: Horizontal flip probability (0.5).</li>
+<li><strong>mosaic</strong>: Mosaic augmentation (1.0).</li>
+<li><strong>mixup</strong>: Mixup augmentation (0.0).</li>
+<li><strong>copy_paste</strong>: Copy-paste augmentation (0.0).</li>
+<li><strong>cfg</strong>: Configuration file (null).</li>
+<li><strong>v5loader</strong>: Use YOLOv5 data loader (false).</li>
+<li><strong>tracker</strong>: Tracker configuration (<code>botsort.yaml</code>).</li>
+<li><strong>save_dir</strong>: Directory to save results (<code>runs/detect/train</code>).</li>
+</ul>
+<h1 id="also-see">Also see</h1>
+<p>1) https://github.com/Viddesh1/Helmet_test_1    <br />
+2) https://github.com/Viddesh1/Bike-Helmet-Detection    <br />
+3) https://github.com/Viddesh1/Bike-Helmet-Detectionv2  <br />
+4) https://github.com/Viddesh1/Bike-Helmet-Detection-Docs   <br />
+5) https://drive.google.com/drive/folders/1M4FckJJeyPQTTWqgo6xWhW8L4tf0EJ4l?usp=sharing <br /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../index_2/" class="btn btn-neutral float-left" title="Index 2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dj_bhd/" class="btn btn-neutral float-right" title="Django">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../index_2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dj_bhd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Django - Bike Rider Helmet Detection Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Django";
+        var mkdocs_page_input_path = "dj_bhd.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Bike Rider Helmet Detection Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_2/">Index 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bhd/">BHD</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Django</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../st_bhd/">Streamlit</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Bike Rider Helmet Detection Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Django</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bike-helmet-detection">Bike-Helmet-Detection</h1>
+<p>This repository contains the implementation of Bike helmet detection using YOLOv8 using Django. This project contains django web application where end user can fill a form which contains image and video to be submited at the front-end or through API end point for prediction of the <strong>bike rider</strong>, <strong>helmet</strong> and <strong>no helmet</strong>. Validation is done on both front-end and API as a result only if both the fields are submited for prediction then only detection will be done else appropriate error message are displayed. Images and Videos that submited by end users are then ran inference on by YOLO model and displayed on index page which is same page. For sending valid data via API, images and videos are processed and appropriate predicted image and videos with auto generated id is send back to end user. </p>
+<h1 id="key-features">Key Features</h1>
+<p>1) Github actions workflow for test with tox.   <br />
+2) Unit testing test cases is done for testing modules. <br />
+3) API is ceated using django-rest-framework.   <br />
+4) API documentation is created using markdown. <br />
+5) coverage report is generated.    <br />
+6) For sorting imports isort is used.   <br />
+7) For code formating  / linting black is used. <br />
+8) For static type checking mypy is used (optional).    <br />
+9) Respective validations are done to the fields.   <br />
+10) Containerized with docker.  <br />
+11) kubernetes.yaml file to test with kubernetes in docker and minikube.    <br /></p>
+<h1 id="techology-used">Techology used</h1>
+<p>1) Front end :- HTML, CSS, Bootstrap    <br />
+2) Backend :- Python (Django, DRF)  <br />
+3) Database :- Sqlite (Default)     <br /></p>
+<h1 id="major-python-libraries-used-for-the-project">Major python libraries used for the project</h1>
+<pre><code class="language-text"># This are the major packages for this project
+
+Django==5.0.1       # For Django web application development
+ultralytics==8.1.9  # For running inference on YOLOv8 model and getting results.
+pillow==10.2.0      # For images and videos files
+
+# Test Coverage
+coverage==7.4.3    # For generating test coverage report
+
+# Django-rest Framework
+django-filter==23.5 # Simple way to filter down a queryset based on parameters of user
+djangorestframework==3.14.0 # For API development 
+Markdown==3.5.2 # pip install markdown # For API documentation
+
+# Re-Structing the codebase
+isort==5.13.2   # For sorting imports
+black==24.3.0   # For python code formatting / linting
+tox==4.14.2     # To run tests on different OS and python environments
+mypy==1.9.0     # Static type checker (optional)
+</code></pre>
+<h1 id="file-structure">File Structure</h1>
+<pre><code class="language-text">Bike-Helmet-Detection
+├── .git # Git file to version control
+├── .github # Github file for workflows
+│   ├── ISSUE_TEMPLATE # Github issue template
+│   │   ├── bug_report.yml # bug report issue form template
+│   │   ├── config.yml  # issue config 
+│   │   ├── feature_request.yml #  feature request form template
+│   │   └── pull_request_template.md # custom PR template 
+│   └── workflows # Github workflow to run after a PR
+│       └── main.yml 
+├── .gitignore # Gitignore file to ignore any unncessary files by git
+├── ml_project  # Django project file
+│   ├── compose.yaml # Docker compose file to manage docker containers
+│   ├── Dockerfile # Docker file to create a image and run using docker compose or docker build
+│   ├── kubernetes.yaml # Kubernetes configuration file for kubernetes, minikube
+│   ├── README.Docker.md # Docker md file
+│   ├── .dockerignore # Docker ignore file to ignore any unnecessary files by docker
+│   ├── .coverage # Hidden coverage file
+│   ├── .coveragerc # Coverage configuration file to work on local
+│   ├── db.sqlite3 # Default database for django
+│   ├── deployment_req.txt # Deployment requirements for docker and any other platform
+│   ├── htmlcov # Generated by coverage &quot;coverage html&quot; command open index.html to see coverage
+│   ├── major_packages.txt # Major packages needed for project
+│   ├── manage.py # Django's command-line utility for administrative tasks
+│   ├── media # Media static files for django for images or videos
+│   │   ├── images
+│   │   │   ├── bike_rider_JlJpRzO.jpg
+│   │   │   ├── bike_rider.jpg
+│   │   │   ├── BikesHelmets118.png
+│   │   │   ├── BikesHelmets8.png
+│   │   │   └── test_image.jpg
+│   │   ├── pred_images
+│   │   │   ├── bike_rider_0XTlKgp.jpg
+│   │   │   ├── bike_rider.jpg
+│   │   │   ├── BikesHelmets118.png
+│   │   │   └──test_pred_image.jpg
+│   │   ├── pred_videos
+│   │   │   ├── he2_1CjSKgu.avi
+│   │   │   ├── he2.avi
+│   │   │   ├── test_pred_image.mp4
+│   │   │   └── test_pred_image_yiShPOt.mp4
+│   │   └── videos
+│   │       ├── he2_M76GncE.mp4
+│   │       ├── he2.mp4
+│   │       ├── test_video_0BeuZlt.mp4
+│   │       ├── test_video.mp4
+│   │       └──test_video_MqdGYhL.mp4
+│   ├── ml_app # Dajngo web app for this project
+│   │   ├── admin.py # Django admin utility
+│   │   ├── apps.py # Django app utility
+│   │   ├── assets # Assets for testing ml_app in UI and API
+│   │   │   ├── Images
+│   │   │   │   ├── bike_rider.jpg
+│   │   │   │   ├── BikesHelmets64.png
+│   │   │   │   ├── BikesHelmets66.png
+│   │   │   │   └── BikesHelmets6.png
+│   │   │   └── Videos
+│   │   │       ├── he2.mp4
+│   │   │       ├── test_1.mp4
+│   │   │       └── test_2.mp4
+│   │   ├── credentials.py # My root username and password
+│   │   ├── forms.py # Django form utility for rendering UI forms
+│   │   ├── __init__.py
+│   │   ├── .isort.cfg # Isort configuration file
+│   │   ├── migrations # Generated by makemigrations and migrate command for DB
+│   │   │   └──  0001_initial.py
+│   │   ├── models.py # Database models
+│   │   ├── pyproject.toml # Configuration for running tox, mypy
+│   │   ├── serializers.py # DRF utility for serilization and deserlization
+│   │   ├── standalone_api_test.py # Standalone test for api
+│   │   ├── static # static files for webapp
+│   │   │   └── ml_app
+│   │   │       └── style.css # Custom css file
+│   │   ├── templates
+│   │   │   └── ml_app
+│   │   │       └── index.html # Custom html file
+│   │   ├── tests # Testcases packages for ml_app 
+│   │   │   ├── __init__.py
+│   │   │   ├── test_assets # Test images and videos for testcases
+│   │   │   │   ├── test_images
+│   │   │   │   │   ├── bike_rider.jpg
+│   │   │   │   │   ├── BikesHelmets64.png
+│   │   │   │   │   ├── BikesHelmets66.png
+│   │   │   │   │   └── BikesHelmets6.png
+│   │   │   │   └── test_videos
+│   │   │   │       ├── he2.mp4
+│   │   │   │       ├── test_1.mp4
+│   │   │   │       └── test_2.mp4
+│   │   │   ├── test_forms.py # Testcase for forms
+│   │   │   ├── test_model.py # Testcase for models.py file
+│   │   │   ├── test_urls.py  # Testcase for urls.py
+│   │   │   └── test_views.py # Testcase for views.py
+│   │   ├── .tox
+│   │   ├── urls.py     # Django utility for URL routing
+│   │   ├── utils.py    # Custom function for YOLOv8 model inference 
+│   │   ├── views.py    # Django utility backend logic for web_app and api 
+│   │   ├── web_cam.py  # Python script to run on local webcam
+│   │   └── weights     # Model weights of YOLOv8
+│   │       ├── best.pt # Best model for YOLOv8
+│   │       ├── information.txt
+│   │       └── last.pt # Last model for YOLOv8
+│   ├── ml_project
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── settings.py # Django settings for ml_app
+│   │   ├── urls.py # URL routing for ml_app and api
+│   │   └── wsgi.py
+│   ├── requirements.txt # pip install -r requirements.txt command for local development
+│   ├── runs # Generated by ultralytics yolov8 predictions
+│   └── tox.ini # tox configurations
+├── tree_all.txt # All the file tree structure including hidden files using tree -a &gt; tree_all.txt
+├── tree.txt # File tree structure excluding hidden files using command tree &gt; tree.txt
+└── README.md # This file itself
+
+</code></pre>
+<h1 id="root-username-and-password">Root username and password</h1>
+<pre><code class="language-text">USERNAME = &quot;viddesh&quot;
+PASSWORD = &quot;!@#$%^&amp;*()_+&quot;
+</code></pre>
+<h1 id="other-dependencies">Other Dependencies</h1>
+<pre><code class="language-text">python version :- 3.10.12 (local)
+Docker version :- Docker version 25.0.3, build 4debf41
+minikube version :- v1.32.0
+kubectl Client version :-  v1.29.2
+</code></pre>
+<h1 id="api-end-endpoints-information">API end endpoints information</h1>
+<p>1) http://127.0.0.1:8000/ --&gt; Run's Django webapp   <br />
+2) http://127.0.0.1:8000/admin/ --&gt; Django admin panel  <br />
+3) http://127.0.0.1:8000/api/ --&gt; Default router root view  <br />
+4) http://127.0.0.1:8000/api/images/ --&gt; End user submitted image and video list api    <br />
+5) http://127.0.0.1:8000/api/predimages/ --&gt; Predicted image and videos api <br /></p>
+<h1 id="how-to-run-this-django-project-locally">How to run this django project locally?</h1>
+<pre><code class="language-shell">python3 -m venv .venv
+source .venv/bin/activate
+unset VIRTUAL_ENV &amp;&amp; exec $SHELL # # To deactivate the virtual environment
+git clone https://github.com/Viddesh1/Bike-Helmet-Detection.git
+cd Bike-Helmet-Detection/
+pip install -r requirements.txt
+cd ml_project/
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver # web app will run on http://127.0.0.1:8000/
+</code></pre>
+<h1 id="run-test-cases">Run Test Cases</h1>
+<pre><code class="language-shell">cd ml_project/
+python3 manage.py test ml_app
+</code></pre>
+<h1 id="run-isort">Run isort</h1>
+<pre><code class="language-shell">cd ml_project/ml_app/
+isort .
+</code></pre>
+<h1 id="run-black">Run Black</h1>
+<pre><code class="language-shell">cd ml_project/ml_app/
+black .
+</code></pre>
+<h1 id="run-tox">Run tox</h1>
+<h3 id="github-actions-takes-care-of-running-tox-remote">Github actions takes care of running tox (remote)</h3>
+<pre><code class="language-shell">cd ml_project/
+tox
+</code></pre>
+<p>OR</p>
+<pre><code class="language-shell">cd ml_project/ml_app/
+tox
+</code></pre>
+<h1 id="run-coverage-report">Run coverage report</h1>
+<pre><code class="language-shell">cd ml_project/
+coverage run manage.py test ml_app
+coverage report -m
+coverage html # To generate html report
+</code></pre>
+<h1 id="run-on-docker">Run on Docker</h1>
+<h3 id="make-sure-docker-demon-is-running-using-docker-desktop">Make sure docker demon is running using docker-desktop</h3>
+<pre><code class="language-shell">cd ml_project/
+docker compose up
+</code></pre>
+<h1 id="run-kubectl-using-docker-in-kubernetes">Run kubectl using docker in kubernetes</h1>
+<h3 id="make-sure-docker-demon-is-running-using-docker-desktop-and-kubernetes-is-enable-in-docker-desktop-settings">Make sure docker demon is running using docker-desktop and kubernetes is enable in docker desktop settings</h3>
+<pre><code class="language-shell">cd ml_project/
+kubectl config get-contexts
+kubectl config use-context docker-desktop
+kubectl apply -f kubernetes.yaml
+kubectl get pods
+</code></pre>
+<h1 id="run-kubectl-using-minikube">Run kubectl using minikube</h1>
+<pre><code class="language-shell">cd ml_project/
+kubectl config get-contexts
+kubectl config use-context minikube
+minikube start
+minikube kubectl -- apply --filename my-deployment.yaml
+minikube stop
+</code></pre>
+<h1 id="inference-on-video">Inference on Video</h1>
+<iframe width="700" height="500"
+  src="/dj_bhd_videos/Traffic_2.mp4">
+</iframe>
+
+<!-- <video width="700", height="500" controls>
+    <source src="/dj_bhd_videos/Traffic_2.mp4" type="video/mp4">
+</video> -->
+
+<h1 id="inference-on-image">Inference on Image</h1>
+<p><img alt="predicted" src="../dj_bhd_images/predicted.jpg" /></p>
+<h1 id="demo">Demo</h1>
+<h3 id="index-page">Index Page</h3>
+<p><img alt="Screenshot_1" src="../dj_bhd_images/Screenshot_1.png" /> <br /> <br /> 
+<img alt="Screenshot_2" src="../dj_bhd_images/Screenshot_2.png" /> <br /> <br /></p>
+<h3 id="django-admin-panel">Django admin panel</h3>
+<p><img alt="Screenshot_3" src="../dj_bhd_images/Screenshot_3.png" /> <br /> <br />
+<img alt="Screenshot_4" src="../dj_bhd_images/Screenshot_4.png" /> <br /> <br /></p>
+<h3 id="sqlite3-database">Sqlite3 database</h3>
+<p><img alt="ml_app_image" src="../dj_bhd_images/ml_app_image.png" /> <br /> <br />
+<img alt="ml_app_predimage" src="../dj_bhd_images/ml_app_predimage.png" /> <br /> <br /></p>
+<h3 id="api-end-points">API end points</h3>
+<p><img alt="Screenshot_5" src="../dj_bhd_images/Screenshot_5.png" /> <br /> <br />
+<img alt="Screenshot_6" src="../dj_bhd_images/Screenshot_6.png" /> <br /> <br /></p>
+<h3 id="api-testing-from-standalone_api_testpy">API Testing from standalone_api_test.py</h3>
+<pre><code class="language-python">response = requests.get(url = f'{base_url}/api/', auth=(credentials.USERNAME, credentials.PASSWORD))
+json_str = json.dumps(response.json(), indent=4)
+print(json_str)
+
+(.venv) viddesh@viddesh-desktop:~/Desktop/Webapp1/Bike-Helmet-Detection/ml_project/ml_app$ python3 standalone_api_test.py 
+{
+    &quot;images&quot;: &quot;http://127.0.0.1:8000/api/images/&quot;,
+    &quot;predimages&quot;: &quot;http://127.0.0.1:8000/api/predimages/&quot;
+}
+</code></pre>
+<pre><code class="language-python"># Sample data for creating an Image
+image_data = {
+    'image': open(os.path.join(os.getcwd(), &quot;tests&quot;, &quot;test_assets&quot;, &quot;test_images&quot;, &quot;bike_rider.jpg&quot;), 'rb'),
+    'video': open(os.path.join(os.getcwd(), &quot;tests&quot;, &quot;test_assets&quot;, &quot;test_videos&quot;, 'he2.mp4'), 'rb')
+}
+
+# Send a POST request to create a new Image
+response = requests.post(image_url, auth=(credentials.USERNAME, credentials.PASSWORD), files=image_data)
+# print('Image API Response:', response.status_code, response.json())
+json_str = json.dumps(response.json(), indent=4)
+print(json_str)
+
+(.venv) viddesh@viddesh-desktop:~/Desktop/Webapp1/Bike-Helmet-Detection/ml_project/ml_app$ python3 standalone_api_test.py 
+{
+    &quot;id&quot;: 65,
+    &quot;image&quot;: &quot;/media/images/bike_rider_pFZJIdi.jpg&quot;,
+    &quot;video&quot;: &quot;/media/videos/he2_WEAqdaF.mp4&quot;
+}
+</code></pre>
+<pre><code class="language-python"># Get the latest response from GET request.
+response = requests.get(url = f'{base_url}/api/images/65/', auth=(credentials.USERNAME, credentials.PASSWORD))
+json_str = json.dumps(response.json(), indent=4)
+print(json_str)
+
+# GET the POST response that I just did.
+response = requests.get(url = f'{base_url}/api/predimages/65/', auth=(credentials.USERNAME, credentials.PASSWORD))
+print(f&quot;Status code: {response.status_code}&quot;)
+json_str = json.dumps(response.json(), indent=4)
+print(json_str)
+
+(.venv) viddesh@viddesh-desktop:~/Desktop/Webapp1/Bike-Helmet-Detection/ml_project/ml_app$ python3 standalone_api_test.py 
+{
+    &quot;id&quot;: 65,
+    &quot;image&quot;: &quot;/media/images/bike_rider_pFZJIdi.jpg&quot;,
+    &quot;video&quot;: &quot;/media/videos/he2_WEAqdaF.mp4&quot;
+}
+Status code: 200
+{
+    &quot;pred_image_id&quot;: 65,
+    &quot;pred_image&quot;: &quot;http://127.0.0.1:8000/media/pred_images/bike_rider_pFZJIdi.jpg&quot;,
+    &quot;pred_video&quot;: &quot;http://127.0.0.1:8000/media/pred_videos/he2_WEAqdaF.avi&quot;
+}
+</code></pre>
+<h1 id="also-see">Also see</h1>
+<p>1) https://github.com/Viddesh1/Helmet_test_1    <br />
+2) https://github.com/Viddesh1/Bike-Helmet-Detectionv2  <br />
+3) https://github.com/Viddesh1/Bike-Helmet-Detection-Docs  <br /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../bhd/" class="btn btn-neutral float-left" title="BHD"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../st_bhd/" class="btn btn-neutral float-right" title="Streamlit">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../bhd/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../st_bhd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

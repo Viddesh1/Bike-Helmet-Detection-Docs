@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Streamlit - Bike Rider Helmet Detection Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Streamlit";
+        var mkdocs_page_input_path = "st_bhd.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Bike Rider Helmet Detection Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_2/">Index 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bhd/">BHD</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dj_bhd/">Django</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Streamlit</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Bike Rider Helmet Detection Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Streamlit</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bike-helmet-detectionv2">Bike-Helmet-Detectionv2</h1>
+<p>This repository contains the Bike Helmet detection using YOLOv8 in streamlit. This web application does processing on end users images and videos to detect <strong>bike rider</strong>, <strong>helmet</strong> and <strong>*no helmet</strong> and render processed images and videos to user.</p>
+<h1 id="major-python-libraries-used-for-the-project">Major python libraries used for the project</h1>
+<pre><code class="language-text"># Below is the list of the major packages needed for working in this project.
+
+ultralytics==8.1.8 # For running inference using YOLOv8 model
+streamlit==1.30.0 # Web application
+pillow==10.2.0 # For managing images and videos
+pytube==15.0.0 # For running inference on small youtube videos
+</code></pre>
+<h1 id="file-structure">File Structure</h1>
+<pre><code class="language-text">Bike-Helmet-Detectionv2 # Root folder of this github repository
+├── app.py  # Start page of the application
+├── assets  # Necessary assets for testing
+│   ├── BikesHelmets6.png
+│   ├── video_1.mp4
+│   ├── video_2.mp4
+│   └── video_3.mp4
+├── .git        # For managing files by git
+├── .gitignore  # Files to be not managed by git
+├── helper.py
+├── images # For rendering Predicted and not predicted to streamlit user interface
+│   ├── BikesHelmets6_detected.jpg
+│   └── BikesHelmets6.png
+├── local_requirements.txt  # For local machine dependencies installation
+├── major_packages.txt  # major packages needed for working in this project
+├── packages.txt        # Externally insatallion of package by streamlit for deployment
+├── README.md   # This readme.md file itself
+├── requirements.txt   # For deployment dependencies file
+├── runs
+│   └── detect
+│       └── predict
+│           └── BikesHelmets6.png # Predicted image
+├── settings.py # Configuration blue print for this streamlit web application
+├── videos  # For rendering video into streamlit user interface
+│   ├── video_1.mp4
+│   ├── video_2.mp4
+│   └── video_3.mp4
+└── weights # Model weights 
+    ├── best.pt # Best model weight as pytorch format
+    ├── information.txt # Information related to placing weights
+    └── last.pt # Last model weight as pytorch format
+</code></pre>
+<h1 id="how-to-run-this-streamlit-webapp-project-locally">How to run this streamlit webapp project locally?</h1>
+<pre><code class="language-shell">python3 -m venv .venv
+source .venv/bin/activate
+git clone https://github.com/Viddesh1/Bike-Helmet-Detectionv2.git
+cd Bike-Helmet-Detectionv2/
+pip install -r local_requirements.txt # For local
+pip install -r requirements.txt # For deployment
+streamlit run app.py
+</code></pre>
+<p>Note:- If this app is not working locally then please add opencv-python==4.9.0.80 below before opencv-python-headless==4.8.1.78 and opencv-contrib-python==4.8.1.78 in requirements.txt file</p>
+<pre><code class="language-text">opencv-python==4.9.0.80
+opencv-python-headless==4.8.1.78
+opencv-contrib-python==4.8.1.78
+</code></pre>
+<h1 id="deployment-pipeline">Deployment Pipeline</h1>
+<p>Continuous delivery is done by streamlit to host on Streamlit Cloud through this Github repository. </p>
+<h1 id="demo">Demo</h1>
+<h2 id="drag-and-drop-the-image-for-object-detections">Drag and drop the image for object detections</h2>
+<p><img alt="st_image_pred" src="../st_bhd_images/st_image_pred.png" /></p>
+<h2 id="select-the-video-and-click-detect-video-objects-button">Select the video and click Detect Video Objects button</h2>
+<p><img alt="st_video_pred" src="../st_bhd_images/st_video_pred.png" /></p>
+<h2 id="works-on-only-web-camera">Works on only web camera</h2>
+<p><strong>Please make sure web camera is connected</strong></p>
+<p><img alt="st_webcam_pred" src="../st_bhd_images/st_webcam_pred.png" /></p>
+<h2 id="works-on-native-device-camera-webcam-smartphone">Works on native device camera (Webcam, Smartphone)</h2>
+<p><strong>Select respective device and click on start button</strong></p>
+<p><img alt="st_devicecam_pred" src="../st_bhd_images/st_devicecam_pred.png" /></p>
+<h2 id="insert-youtube-url-and-click-on-detect-objects-button">Insert youtube url and click on Detect Objects button</h2>
+<p><img alt="st_yt_pred" src="../st_bhd_images/st_yt_pred.png" /></p>
+<h1 id="hosted-on-streamlit-">Hosted on Streamlit:-</h1>
+<p>https://bike-helmet-detectionv2-dmehozp3lkef4wnssaepjf.streamlit.app/</p>
+<h1 id="also-see">Also see</h1>
+<p>1) https://github.com/Viddesh1/Helmet_test_1    <br />
+2) https://github.com/Viddesh1/Bike-Helmet-Detection    <br />
+3) https://github.com/Viddesh1/Bike-Helmet-Detection-Docs  <br /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dj_bhd/" class="btn btn-neutral float-left" title="Django"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dj_bhd/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
