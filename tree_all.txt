@@ -1,0 +1,74 @@
+.
+├── Old_Viddesh_Project_Report.docx
+├── Old_Viddesh_Project_Report.pdf
+├── README.md
+├── my_project
+│   ├── docs
+│   │   ├── Jupyter_notebook_op
+│   │   │   ├── sample_code_1.png
+│   │   │   ├── sample_code_10.png
+│   │   │   ├── sample_code_11.png
+│   │   │   ├── sample_code_12.png
+│   │   │   ├── sample_code_2.png
+│   │   │   ├── sample_code_3.png
+│   │   │   ├── sample_code_4.png
+│   │   │   ├── sample_code_5.png
+│   │   │   ├── sample_code_6.png
+│   │   │   ├── sample_code_7.png
+│   │   │   ├── sample_code_8.png
+│   │   │   └── sample_code_9.png
+│   │   ├── bhd.md
+│   │   ├── dj_bhd.md
+│   │   ├── dj_bhd_images
+│   │   │   ├── Screenshot_1.png
+│   │   │   ├── Screenshot_2.png
+│   │   │   ├── Screenshot_3.png
+│   │   │   ├── Screenshot_4.png
+│   │   │   ├── Screenshot_5.png
+│   │   │   ├── Screenshot_6.png
+│   │   │   ├── ml_app_image.png
+│   │   │   ├── ml_app_predimage.png
+│   │   │   └── predicted.jpg
+│   │   ├── dj_bhd_videos
+│   │   │   └── Traffic_2.mp4
+│   │   ├── docs_images
+│   │   │   ├── docs_bhd.png
+│   │   │   └── docs_index.png
+│   │   ├── index.md
+│   │   ├── index_2.md
+│   │   ├── st_bhd.md
+│   │   ├── st_bhd_images
+│   │   │   ├── st_devicecam_pred.png
+│   │   │   ├── st_image_pred.png
+│   │   │   ├── st_video_pred.png
+│   │   │   ├── st_webcam_pred.png
+│   │   │   └── st_yt_pred.png
+│   │   ├── yolov8_architecture
+│   │   │   ├── YOLOv8_architecture.jpg
+│   │   │   ├── best.pt.png
+│   │   │   └── last.pt.png
+│   │   └── yolov8_images
+│   │       ├── All_Video_Pred.png
+│   │       ├── F1_curve.png
+│   │       ├── PR_curve.png
+│   │       ├── P_curve.png
+│   │       ├── R_curve.png
+│   │       ├── confusion_matrix.png
+│   │       ├── labels.jpg
+│   │       ├── labels_correlogram.jpg
+│   │       ├── results.png
+│   │       ├── train_batch0.jpg
+│   │       ├── train_batch1.jpg
+│   │       ├── train_batch2.jpg
+│   │       ├── val_batch0_labels.jpg
+│   │       ├── val_batch0_pred.jpg
+│   │       ├── val_batch1_labels.jpg
+│   │       ├── val_batch1_pred.jpg
+│   │       ├── val_batch2_labels.jpg
+│   │       ├── val_batch2_pred.jpg
+│   │       └── yolov8_metrics.png
+│   └── mkdocs.yml
+├── requirements.txt
+└── tree_all.txt
+
+9 directories, 62 files
